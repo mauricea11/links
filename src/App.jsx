@@ -1,4 +1,5 @@
 import LinkContainer from "./components/LinkContainer"
+import "./app.css";
 
 function App(){
 

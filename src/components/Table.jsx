@@ -1,7 +1,7 @@
 function TableHeader(){
     /* responsible for rendering the head of our table with the appropriate columns */
     return(
-        <thead>
+      <thead>
         <tr>
           <th>Name</th>
           <th>URL</th>
@@ -14,6 +14,8 @@ function TableHeader(){
 const TableBody = (props) => {
     // boilerplate table body functional component
     // we use Array.map to create table rows from LinkData passed via props
+  
+    
     const rows = props.linkData.map((row, index) => {
       return (
         <tr key={index}>
@@ -32,11 +34,11 @@ const TableBody = (props) => {
   }
 
 
-function Table(){
+function Table({linkData, removeLink}){
     return(
         <table>
         <TableHeader/>
-        <TableBody/>
+        <TableBody linkData={linkData} removeLink={removeLink} />
         </table>
     )
 }

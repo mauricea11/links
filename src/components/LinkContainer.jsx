@@ -1,27 +1,32 @@
 import Table from './Table'
 import Form from './Form'
+import React, {useState} from 'react'
 
-function LinkContainer(){
+function LinkContainer() {
+    
+    const [favLinks, setFavLinks] = useState([])
 
-    const handleRemove = (index) => {
-        /*
-                TODO - Create logic for setting the state to filter array and remove favLink at index
-            */
-      }
+    const removeLink = (index) => {
+        const updatedLinks = [...favLinks]
+        updatedLinks.splice(index, 1)
+        setFavLinks(updatedLinks)
+    }
+
     
       const handleSubmit = (favLink) => {
-        /*
-                TODO - Create logic to set state and add new favLink to favLinks array in state
-            */
+        setFavLinks([...favLinks, favLink])
       }
+    
+    const submitForm = (formData) => {
+        handleSubmit(formData)
+    }
 
     return(
         <div>
             <h1>My Favorite Links</h1>
             <p>Add a new link with a name and URL to the table! </p>
-            <Table />
-            <h1>Add New</h1>
-            <Form />
+            <Table linkData={favLinks} removeLink={removeLink} />
+            <Form handleSubmit={submitForm}/> 
         </div>
     )
 
